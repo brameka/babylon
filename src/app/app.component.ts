@@ -2,12 +2,16 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { FeedPage } from '../pages/feed/feed';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+import {DataService} from '../services/data.service';
+import { AngularFireDatabase } from 'angularfire2/database';
+
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
+  providers: [DataService, AngularFireDatabase]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -22,6 +26,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
+      { title: 'Feed', component: FeedPage },
       { title: 'List', component: ListPage }
     ];
 
