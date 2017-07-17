@@ -11,7 +11,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { environment } from '../environments/environment';
 
-import { MdGridListModule } from '@angular/material';
+import { MdGridListModule, MdButtonModule, MdToolbarModule } from '@angular/material';
 
 //import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -28,6 +28,8 @@ import { MdGridListModule } from '@angular/material';
   imports: [
     BrowserModule,
     MdGridListModule,
+    MdButtonModule,
+    MdToolbarModule,
     AngularFireModule.initializeApp(environment.firebase),
     IonicModule.forRoot(MyApp, {
         mode: 'md'
