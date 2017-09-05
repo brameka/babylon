@@ -1,9 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-import { Http } from '@angular/http';
 import {DataService} from '../../services/data.service';
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Storage } from '@ionic/storage';
 import { ActionSheetController } from 'ionic-angular';
@@ -26,11 +23,9 @@ export class PodPage {
   pod: any;
   pods: any[];
 
-
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private data:DataService,
-              private storage: Storage,
               public actionSheet: ActionSheetController,
               public toastController: ToastController
               ) {

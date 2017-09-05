@@ -15,15 +15,19 @@
   <md-grid-list cols="4" rowHeight="1:1">
 
     <md-grid-tile *ngFor="let pod of pods" (click)="details(pod)">
-      <div class="tile-container" *ngIf="pod.status == 0">  
+      <div class="tile-container" *ngIf="pod.status == 0 && pod.subscription == 0">  
         <img src="assets/images/{{pod.avatar}}" alt="">
       </div>
 
-      <div class="tile-container" *ngIf="pod.status == 1">  
+      <div class="tile-container" *ngIf="pod.status == 1 && pod.subscription == 0">  
         <img class="desaturate" src="assets/images/{{pod.avatar}}" alt="">
         <div class="check">
           <ion-icon md="md-checkmark-circle"></ion-icon>
         </div>
+      </div>
+
+      <div class="tile-container" *ngIf="pod.subscription == 1">  
+        <img class="desaturate" src="assets/images/{{pod.avatar}}" alt="">
       </div>
 
     </md-grid-tile>

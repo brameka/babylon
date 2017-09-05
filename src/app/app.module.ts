@@ -4,8 +4,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { AngularFireModule } from 'angularfire2';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { FeedPage } from '../pages/feed/feed';
-import { ListPage } from '../pages/list/list';
 import { PodPage } from '../pages/pod/pod';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -27,8 +25,6 @@ import { DataService } from '../services/data.service';
   declarations: [
     MyApp,
     HomePage,
-    FeedPage,
-    ListPage,
     PodPage
   ],
   imports: [
@@ -46,8 +42,6 @@ import { DataService } from '../services/data.service';
   entryComponents: [
     MyApp,
     HomePage,
-    FeedPage,
-    ListPage,
     PodPage
   ],
   providers: [

@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
 import { PodPage } from '../pod/pod';
 import { DataService } from '../../services/data.service';
-import { Storage } from '@ionic/storage';
-import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/Rx';
 
