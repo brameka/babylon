@@ -1,7 +1,63 @@
 page-feed {
 
+    .row {
+        flex-wrap: nowrap;
+    }
+
     md-grid-tile {
         background: lightblue;
     }
+
+    ion-row ion-col {
+        padding: 0 5px 5px 5px;
+    }
+
+    .scroll-content-container {
+        height: 50px;
+
+        ion-col {
+            position: relative;
+        }
+
+        .day-title {
+            position: absolute;
+        }
+
+        .scroll-content {
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+
+        .number-fab.fab[mini] {
+            margin: 0;
+            color: #000;
+            background-color: color($colors, white, base);
+        }
+
+        .number-fab.fab[mini].active {
+            background-color: $highlight;
+            color: color($colors, white, base);
+        }
+
+        .fab {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+
+
+    }
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
 
 }

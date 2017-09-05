@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-navbar no-border-bottom>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Preschooled #01</ion-title>
+    <ion-buttons end>
+        <button ion-button icon-only (click)="options()">
+            <ion-icon name="md-more"></ion-icon>
+        </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-fab right bottom>
+        <button ion-fab color="primary"><ion-icon name="md-checkmark"></ion-icon></button>
+        <ion-fab-list side="left">
+            <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
+            <button ion-fab (click)="complete()"><ion-icon name="md-checkmark-circle"></ion-icon></button>
+        </ion-fab-list>
+    </ion-fab>
+    <ion-card>
+
+        <div class="video-container">
+            <video #videoPlayer class="video" preload="auto" loop webkit-playsinline autoplay muted (click)="play()">
+                <source src="assets/video/ep1.mp4" type="video/mp4">
+            </video>
+
+            <!--<ion-icon *ngIf="videoState" class="video-container__play" name="md-play" (click)="play()"></ion-icon>-->
+            <!--<ion-icon *ngIf="!videoState" class="video-container__play" name="md-pause" (click)="play()"></ion-icon>-->
+
+            <ion-icon *ngIf="!volumeState" class="video-container__sound" name="md-volume-off" (click)="volume()"></ion-icon>
+            <ion-icon *ngIf="volumeState" class="video-container__sound" name="md-volume-up" (click)="volume()"></ion-icon>
+        </div>
+        
+        <!--<img src="assets/images/cf.jpg"/>-->
+
+        <ion-card-content>
+            <ion-card-title>
+                {{pod.name}}
+            </ion-card-title>
+            <p>
+                {{pod.description}}
+            </p>
+        </ion-card-content>
+    </ion-card>
+
+</ion-content>

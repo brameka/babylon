@@ -16,19 +16,17 @@ import { AngularFireDatabase } from 'angularfire2/database';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  modules: any[];
+
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}>;
-
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
+              private dataService: DataService) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Home', component: HomePage },
-      { title: 'Feed', component: FeedPage },
-      { title: 'List', component: ListPage }
-    ];
+    this.dataService.modules$.subscribe(x => {
+      this.modules = x;
+    });
 
   }
 
@@ -45,5 +43,10 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  details(module){
+    //this.nav.setRoot(page.component);
+    console.log(module.id);
   }
 }

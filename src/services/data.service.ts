@@ -1,69 +1,254 @@
 import {Injectable} from '@angular/core';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
-
-// if you've gone with the local installation approach, you'd use the following:
-import * as firebase from 'firebase';
-import { Headers, Http } from '@angular/http';
-
-import { Observable }        from 'rxjs/Observable';
-import { Subject }           from 'rxjs/Subject';
-
-// Observable class extensions
-import 'rxjs/add/observable/of';
-
-// Observable operators
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/delay';
-import 'rxjs/add/operator/map';
+import { Storage } from '@ionic/storage';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
+import 'rxjs/Rx';
+import * as _ from 'lodash';
 
 @Injectable()
 export class DataService {
-    public db: firebase.database.Database;
-    constructor(private fire:AngularFireDatabase) {
-        this.db = firebase.database();
-    }
 
-    items():FirebaseListObservable<any[]>{
-        return this.fire.list("/items", {
-            query: {
-                orderByChild: 'priority'
+    private pods = new Subject<any[]>(); 
+    pods$ = this.pods.asObservable();
+
+    private modules = new Subject<any[]>(); 
+    modules$ = this.modules.asObservable();
+
+    constructor(private storage:Storage) {
+        // this.saveModules(this._modules);
+        
+        storage.get('modules').then((result) => {
+            if (result) {
+                console.log("modules from storage");
+                this.modules.next(result);
+            } else {
+                console.log("modules from file");
+                this.saveModules(this._modules);
             }
         });
-        
-        //return this.fire.database.ref("/items").
 
-
-        // var ref = this.db.ref("/items");
-        // ref.on('child_added', function(data) {
-        //     addCommentElement(postElement, data.key, data.val().text, data.val().author);
-        // });
-
-        // var commentsRef = firebase.database().ref('post-comments/' + postId);
-        // commentsRef.on('child_added', function(data) {
-        //     addCommentElement(postElement, data.key, data.val().text, data.val().author);
-        // });
-
-        // commentsRef.on('child_changed', function(data) {
-        //     setCommentValues(postElement, data.key, data.val().text, data.val().author);
-        // });
-
-        // commentsRef.on('child_removed', function(data) {
-        //     deleteComment(postElement, data.key);
-        // });
-
-
-        // return this.http
-        //         .get(("/"))
-        //         .delay(1000)
-        //         .map(response => response.json().data as any);
+        storage.get('pods').then((result) => {
+            if (result) {
+                this.pods.next(result);
+            } else {
+                this.save(this._data);
+            }
+        });
     }
-}
 
-/*
-var ref = new Firebase("https://babylon-72f99.firebaseio.com/items");
-undefined
-ref.set({id:1, name:"test"});
-ref.push({name:"test2"}); returns a promise with a key
-*/
+    public save (data) {
+        console.log("saving data");
+        console.log(data);
+        this.storage.set('pods', data);
+        this.pods.next(data);
+    }
+
+    public saveModules (data) {
+        this.storage.set('modules', data);
+        this.modules.next(data);
+    }
+
+    public reset () {
+        console.log("resetting");
+        this.save(this._data);
+    }
+
+    private _modules: any[] = [
+        {
+            id: 1,
+            avatar: 'cf.jpg',
+            name: 'Preschool Module 1',
+            description: '',
+            status: 0
+        },
+        {
+            id: 2,
+            avatar: 'cf.jpg',
+            name: 'Preschool Module 2',
+            description: '',
+            status: 0
+        },
+        {
+            id: 3,
+            avatar: 'cf.jpg',
+            name: 'Preschool Module 3',
+            description: '',
+            status: 0
+        },
+        {
+            id: 4,
+            avatar: 'cf.jpg',
+            name: 'Preschool Module 4',
+            description: '',
+            status: 0
+        }
+    ]
+
+    private _data: any = [
+        {
+            id: 1,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 2,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+
+        },
+        {
+            id: 3,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 4,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 5,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        },
+
+        {
+            id: 6,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 7,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+
+        },
+        {
+            id: 8,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 9,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 10,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 11,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 12,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+
+        },
+        {
+            id: 13,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 14,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 15,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 16,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 17,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+
+        },
+        {
+            id: 18,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 19,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 20,
+            avatar: "1.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        },
+    ];
+}

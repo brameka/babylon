@@ -1,23 +1,10 @@
-<ion-header>
-  <ion-navbar no-border-bottom color="primary">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <!--<button md-icon-button menuToggle><i class="material-icons">menu</i></button>-->
-    <ion-title>feed</ion-title>
-    <ion-buttons end>
-      <!--<button md-icon-button><i class="material-icons">textsms</i></button>-->
-        <button ion-button icon-only>
-            <ion-icon name="apps"></ion-icon>
-        </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+<ion-content #content class="scroll-content-actual">
 
-
-<ion-content>
-
-  <md-grid-list cols="4" rowHeight="1:1">
+  <div class="content">
+    <img src="/assets/images/bg.png" alt="">
+  </div>
+  
+  <!--<md-grid-list cols="5" rowHeight="1:1">
     <md-grid-tile>1</md-grid-tile>
     <md-grid-tile>2</md-grid-tile>
     <md-grid-tile>3</md-grid-tile>
@@ -28,30 +15,40 @@
     <md-grid-tile>3</md-grid-tile>
     <md-grid-tile>4</md-grid-tile>
     <md-grid-tile>5</md-grid-tile>
-  </md-grid-list>
-
-  <!--<ion-grid>
-    <ion-row>
-      <ion-col col-12 col-sm>
-        1 of 5
-      </ion-col>
-      <ion-col col-12 col-sm>
-        2 of 5
-      </ion-col>
-      <ion-col col-12 col-sm>
-        3 of 5
-      </ion-col>
-      <ion-col col-12 col-sm>
-        4 of 5
-      </ion-col>
-      <ion-col col-12 col-sm>
-        5 of 5
-      </ion-col>
-    </ion-row>
-  </ion-grid>-->
+  </md-grid-list>-->
 
   <!--<li *ngFor="let item of items | async">
        {{ item | json }}
     </li>-->
 
 </ion-content>
+
+<ion-header>
+    <ion-navbar no-border-bottom color="white">
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Feed</ion-title>
+        
+        <ion-buttons end>
+            <button ion-button icon-only>
+                <ion-icon name="md-calendar"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+    
+    <ion-content #scroller class="scroll-content-container">
+            <ion-row>
+                <ion-col width-15 *ngFor="let day of days">
+                    
+                    <button class="no-shadow number-fab" ion-fab clear outline mini *ngIf="!day.selected" (click)="changeDay(day)">
+                        <!--<div class="day-title">TUE</div>-->
+                        {{day.number}}
+                    </button> 
+                    <button class="no-shadow number-fab active" ion-fab clear outline mini *ngIf="day.selected" (click)="changeDay(day)">
+                        {{day.number}}
+                    </button> 
+                </ion-col>
+            </ion-row>
+    </ion-content>
+</ion-header>

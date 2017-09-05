@@ -6,12 +6,17 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { FeedPage } from '../pages/feed/feed';
 import { ListPage } from '../pages/list/list';
+import { PodPage } from '../pages/pod/pod';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { environment } from '../environments/environment';
 
 import { MdGridListModule, MdButtonModule, MdToolbarModule } from '@angular/material';
+
+import { IonicStorageModule } from '@ionic/storage';
+
+import { DataService } from '../services/data.service';
 
 //import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 //import {NoopAnimationsModule} from '@angular/platform-browser/animations';
@@ -23,7 +28,8 @@ import { MdGridListModule, MdButtonModule, MdToolbarModule } from '@angular/mate
     MyApp,
     HomePage,
     FeedPage,
-    ListPage
+    ListPage,
+    PodPage
   ],
   imports: [
     BrowserModule,
@@ -33,18 +39,21 @@ import { MdGridListModule, MdButtonModule, MdToolbarModule } from '@angular/mate
     AngularFireModule.initializeApp(environment.firebase),
     IonicModule.forRoot(MyApp, {
         mode: 'md'
-    })
+    }),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
     FeedPage,
-    ListPage
+    ListPage,
+    PodPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    DataService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
