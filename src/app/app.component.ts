@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
+import { ModulePage } from '../pages/module/module';
 
 import {DataService} from '../services/data.service';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -17,6 +18,7 @@ export class MyApp {
   modules: any[];
 
   rootPage: any = HomePage;
+  modulePage: any = ModulePage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
               private dataService: DataService) {
@@ -44,7 +46,13 @@ export class MyApp {
   }
 
   details(module){
-    //this.nav.setRoot(page.component);
+    this.modulePage.module = module;
+    console.log(this.modulePage.module);
+    if (module.status == 0) {
+      this.nav.setRoot(this.modulePage);
+    } else {
+      this.nav.setRoot(this.rootPage); // todo
+    }
     console.log(module.id);
   }
 }

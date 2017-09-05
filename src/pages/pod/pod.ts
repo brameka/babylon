@@ -1,8 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {DataService} from '../../services/data.service';
-import { Subject } from 'rxjs/Subject';
-import { Storage } from '@ionic/storage';
 import { ActionSheetController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 

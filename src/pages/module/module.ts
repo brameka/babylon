@@ -6,31 +6,26 @@ import 'rxjs/Rx';
 
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'page-module',
+  templateUrl: 'module.html'
 })
 
-export class HomePage {
-  pods:any[];
+export class ModulePage {
 
-  constructor(public nav: NavController, 
-              public service: DataService,
-              public actionSheet: ActionSheetController,
-              public alertController: AlertController,
-              private toastController: ToastController) {
-    service.pods$.subscribe(x => {
-      this.pods = x;
-    });
+    public module: any;
 
-  }
+    constructor(public nav: NavController, 
+                public service: DataService,
+                public actionSheet: ActionSheetController,
+                public alertController: AlertController,
+                private toastController: ToastController) {
+                    console.log("module page constructor");
+                    console.log(this.module);
+    }
 
-  details (pod) {
-    var payload = {
-      pod: pod,
-      pods: this.pods
-    };
-    this.nav.push(PodPage, payload);
-  }
+
+
+  
 
   options() {
     let actionSheet = this.actionSheet.create({

@@ -5,6 +5,7 @@ import { AngularFireModule } from 'angularfire2';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PodPage } from '../pages/pod/pod';
+import { ModulePage } from '../pages/module/module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { DataService } from '../services/data.service';
   declarations: [
     MyApp,
     HomePage,
-    PodPage
+    PodPage,
+    ModulePage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { DataService } from '../services/data.service';
   entryComponents: [
     MyApp,
     HomePage,
-    PodPage
+    PodPage,
+    ModulePage
   ],
   providers: [
     StatusBar,

@@ -73,13 +73,6 @@ export class DataService {
             name: 'Preschool Module 3',
             description: '',
             status: 0
-        },
-        {
-            id: 4,
-            avatar: 'cf.jpg',
-            name: 'Preschool Module 4',
-            description: '',
-            status: 0
         }
     ]
 
@@ -90,8 +83,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 2,
@@ -99,9 +91,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
-
+            status: 0
         },
         {
             id: 3,
@@ -109,8 +99,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 4,
@@ -118,8 +107,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 5,
@@ -127,8 +115,7 @@ export class DataService {
             video: "1.mp4",
             name: "Does it float?",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
 
         {
@@ -137,8 +124,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 7,
@@ -146,8 +132,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 8,
@@ -155,8 +140,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 9,
@@ -164,8 +148,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 10,
@@ -173,8 +156,7 @@ export class DataService {
             video: "1.mp4",
             name: "Does it float?",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 11,
@@ -182,8 +164,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 12,
@@ -191,8 +172,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 0
+            status: 0
         },
         {
             id: 13,
@@ -200,8 +180,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
+            status: 0
         },
         {
             id: 14,
@@ -209,8 +188,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
+            status: 0
         },
         {
             id: 15,
@@ -218,8 +196,7 @@ export class DataService {
             video: "1.mp4",
             name: "Does it float?",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
+            status: 0
         },
         {
             id: 16,
@@ -227,8 +204,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
+            status: 0
         },
         {
             id: 17,
@@ -236,8 +212,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
+            status: 0
         },
         {
             id: 18,
@@ -245,8 +220,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
+            status: 0
         },
         {
             id: 19,
@@ -254,8 +228,7 @@ export class DataService {
             video: "1.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
+            status: 0
         },
         {
             id: 20,
@@ -263,8 +236,7 @@ export class DataService {
             video: "1.mp4",
             name: "Does it float?",
             description: "This is a description of the pod",
-            status: 0,
-            subscription: 1
-        },
+            status: 0
+        }
     ];
 }
