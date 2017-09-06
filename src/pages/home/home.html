@@ -3,11 +3,18 @@
     <button ion-button menuToggle>
       <ion-icon name="md-apps"></ion-icon>
     </button>
-    <ion-title>Preschooled</ion-title>
+    <ion-title>{{module.name}}</ion-title>
     <ion-buttons end>
-        <button ion-button icon-only (click)="options()">
+
+        <button *ngIf="module.status == 1" ion-button icon-only (click)="options()">
             <ion-icon name="md-more"></ion-icon>
         </button>
+
+        <!--<button *ngIf="module.status == 0" ion-button icon-only (click)="options()">
+            <ion-icon name="md-information-circle"></ion-icon>
+        </button>-->
+       
+
     </ion-buttons>
   </ion-navbar>
 </ion-header>
@@ -16,7 +23,8 @@
 
     <md-grid-tile *ngFor="let pod of pods" (click)="details(pod)">
       <div class="tile-container" *ngIf="pod.status == 0">  
-        <img src="assets/images/{{pod.avatar}}" alt="">
+        <img src="assets/images/{{pod.avatar}}" alt="" style="min-height: 135px;">
+        <span>{{pod.id | number:'2.0'}}</span>
       </div>
 
       <div class="tile-container" *ngIf="pod.status == 1">  

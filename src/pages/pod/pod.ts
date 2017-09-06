@@ -1,8 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
-import {DataService} from '../../services/data.service';
-import { ActionSheetController } from 'ionic-angular';
-import { ToastController } from 'ionic-angular';
+import { NavController, NavParams, PopoverController, ActionSheetController, ToastController} from 'ionic-angular';
+import { DataService } from '../../services/data.service';
+import { Thumbsover } from '../popover/thumbsover';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/catch';
@@ -19,20 +18,28 @@ export class PodPage {
   videoState: boolean = true;
   volumeState: boolean = false;
   pod: any;
-  pods: any[];
+  module: any;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private data:DataService,
               public actionSheet: ActionSheetController,
-              public toastController: ToastController
+              public toastController: ToastController,
+              public popover: PopoverController
               ) {
         this.pod = this.navParams.get('pod');
-        this.pods = this.navParams.get('pods');
+        this.module = this.navParams.get('module');
   }
 
   podClick(pod: any){
     console.log("pod clicked");
+  }
+
+  presentPopover() {
+    let popover = this.popover.create(Thumbsover, {
+      module: this.module
+    });
+    popover.present();
   }
 
   play(){
@@ -51,14 +58,13 @@ export class PodPage {
 
   complete(){
     this.pod.status = 1;
-    this.data.save(this.pods);
+    this.data.save();
     this.showToast("Activity completed");
     this.goback();
   }
 
   reset(){
     this.pod.status = 0;
-    this.data.save(this.pods);
     this.showToast("Activity Reset");
     this.goback();
   }
@@ -77,7 +83,6 @@ export class PodPage {
           role: 'cancel',
           icon: 'md-close',
           handler: () => {
-            console.log('Cancel clicked');
           }
         }
       ]
@@ -86,7 +91,10 @@ export class PodPage {
   }
 
   goback() {
-    this.navCtrl.pop();
+    this.navCtrl.pop({}, () => {
+      console.log("hello");
+      this.presentPopover();
+    })
   }
 
   showToast(message) {
@@ -97,7 +105,6 @@ export class PodPage {
     });
 
     toast.onDidDismiss(() => {
-        console.log('Dismissed toast');
     });
 
     toast.present();

@@ -6,6 +6,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PodPage } from '../pages/pod/pod';
 import { ModulePage } from '../pages/module/module';
+import { Popover } from '../pages/popover/popover';
+import { Thumbsover } from '../pages/popover/thumbsover';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +29,9 @@ import { DataService } from '../services/data.service';
     MyApp,
     HomePage,
     PodPage,
-    ModulePage
+    ModulePage,
+    Popover,
+    Thumbsover
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,9 @@ import { DataService } from '../services/data.service';
     MyApp,
     HomePage,
     PodPage,
-    ModulePage
+    ModulePage,
+    Popover,
+    Thumbsover
   ],
   providers: [
     StatusBar,

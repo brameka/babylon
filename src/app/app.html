@@ -9,8 +9,9 @@
   <ion-content>
     <div class="app-content">
       <ion-list>
-        <div class="module" *ngFor="let module of modules" (click)="details(module)">
-          <img src="assets/images/cf.jpg"/>
+        <div class="module" *ngFor="let module of dataService.data">
+          <img menuClose src="assets/images/cf.jpg" (click)="details(module)"/>
+          <!--<button ion-button menuClose (click)="details(module)">{{module.id}}</button>-->
         </div>
       </ion-list>
     </div>

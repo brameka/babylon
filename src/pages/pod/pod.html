@@ -24,7 +24,7 @@
 
         <div class="video-container">
             <video #videoPlayer class="video" preload="auto" loop webkit-playsinline autoplay muted (click)="play()">
-                <source src="assets/video/ep1.mp4" type="video/mp4">
+                <source src="assets/video/{{pod.video}}" type="video/mp4">
             </video>
 
             <!--<ion-icon *ngIf="videoState" class="video-container__play" name="md-play" (click)="play()"></ion-icon>-->

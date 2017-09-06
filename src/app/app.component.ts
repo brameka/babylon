@@ -14,19 +14,22 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-
-  modules: any[];
-
+  modules: any[] = [];
   rootPage: any = HomePage;
   modulePage: any = ModulePage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
               private dataService: DataService) {
+    
     this.initializeApp();
 
-    this.dataService.modules$.subscribe(x => {
+    dataService.modules$.subscribe(x => {
       this.modules = x;
     });
+
+    // dataService.selectedModule$.subscribe(x => {
+    //   //this.module = x;
+    // });
 
   }
 
@@ -46,13 +49,8 @@ export class MyApp {
   }
 
   details(module){
-    this.modulePage.module = module;
-    console.log(this.modulePage.module);
-    if (module.status == 0) {
-      this.nav.setRoot(this.modulePage);
-    } else {
-      this.nav.setRoot(this.rootPage); // todo
-    }
-    console.log(module.id);
+    this.nav.setRoot(this.modulePage, {
+      module: module
+    });
   }
 }

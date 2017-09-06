@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
 import { PodPage } from '../pod/pod';
+import { Popover } from '../popover/popover';
 import { DataService } from '../../services/data.service';
 import 'rxjs/Rx';
+
+import { PopoverController } from 'ionic-angular';
+
 
 
 @Component({
@@ -11,25 +15,53 @@ import 'rxjs/Rx';
 })
 
 export class HomePage {
-  pods:any[];
+  modules:any[] = [];
+  module:any = {};
+  pods:any[] = [];
+
+  subscription: any;
 
   constructor(public nav: NavController, 
+              public navParams: NavParams,
               public service: DataService,
               public actionSheet: ActionSheetController,
               public alertController: AlertController,
-              private toastController: ToastController) {
-    service.pods$.subscribe(x => {
-      this.pods = x;
+              private toastController: ToastController,
+              private popover: PopoverController) {
+
+    //service.refresh();
+
+    this.subscription = service.modules$.subscribe(x => {
+      this.modules = x;
+      this.module = this.modules[0];
+      this.pods = this.module.data;
     });
 
+  }
+
+  ionViewDidLoad(){
+
+  }
+
+  ionViewWillEnter(){
+    
+  }
+
+  ionViewWillUnload(){
+    this.subscription.unsubscribe();
   }
 
   details (pod) {
     var payload = {
       pod: pod,
-      pods: this.pods
+      modules: this.modules
     };
     this.nav.push(PodPage, payload);
+  }
+
+  presentPopover() {
+    let popover = this.popover.create(Popover);
+    popover.present();
   }
 
   options() {
@@ -68,7 +100,7 @@ export class HomePage {
         {
           text: 'Ok',
           handler: () => {
-            this.service.reset();
+            this.service.reset(this.module);
             this.showToast("Module Reset")
           }
         }
@@ -78,7 +110,7 @@ export class HomePage {
   }
 
   showToast(message) {
-    
+
     let toast = this.toastController.create({
         message: message,
         duration: 3000,

@@ -6,77 +6,56 @@ import 'rxjs/Rx';
 @Injectable()
 export class DataService {
 
-    private pods = new Subject<any[]>(); 
-    pods$ = this.pods.asObservable();
+    data: any[];
+
+    private selectedModule = new Subject<any[]>(); 
+    selectedModule$ = this.selectedModule.asObservable();
 
     private modules = new Subject<any[]>(); 
     modules$ = this.modules.asObservable();
 
     constructor(private storage:Storage) {
-        // this.save(this._data);
-        // this.saveModules(this._modules);
-        
-        storage.get('modules').then((result) => {
+        this.refresh();
+    }
+
+    public refresh(){
+        //this.data = this._modules;
+        //this.save();
+
+        this.storage.get('modules').then((result) => {
             if (result) {
-                console.log("modules from storage");
+                this.data = result; 
                 this.modules.next(result);
             } else {
-                console.log("modules from file");
-                this.saveModules(this._modules);
-            }
-        });
-
-        storage.get('pods').then((result) => {
-            if (result) {
-                this.pods.next(result);
-            } else {
-                this.save(this._data);
+                this.data = this._modules;
+                this.save();
             }
         });
     }
 
-    public save (data) {
-        console.log("saving data");
-        console.log(data);
-        this.storage.set('pods', data);
-        this.pods.next(data);
+    private setModule(modules){
+        this.storage.get('selectedModuleId').then((id) => {
+            if(id) {
+                this.selectedModule.next(modules[0]);
+            }else{
+                this.selectedModule.next(modules[id-1]);
+            }
+        })
     }
 
-    public saveModules (data) {
-        this.storage.set('modules', data);
-        this.modules.next(data);
+    public save () {
+        this.storage.set("modules", this.data);
+        this.modules.next(this.data);
     }
 
-    public reset () {
-        console.log("resetting");
-        this.save(this._data);
-    }
-
-    private _modules: any[] = [
-        {
-            id: 1,
-            avatar: 'cf.jpg',
-            name: 'Preschool Module 1',
-            description: '',
-            status: 0
-        },
-        {
-            id: 2,
-            avatar: 'cf.jpg',
-            name: 'Preschool Module 2',
-            description: '',
-            status: 0
-        },
-        {
-            id: 3,
-            avatar: 'cf.jpg',
-            name: 'Preschool Module 3',
-            description: '',
-            status: 0
+    public reset (module) {
+        for(let pod of module.data){
+            pod.status = 0;
         }
-    ]
+        this.save();
+    }
 
-    private _data: any = [
+    private data1: any = [
         {
             id: 1,
             avatar: "1.jpg",
@@ -87,9 +66,9 @@ export class DataService {
         },
         {
             id: 2,
-            avatar: "1.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
+            avatar: "2.jpg",
+            video: "2.mp4",
+            name: "Big Or Little",
             description: "This is a description of the pod",
             status: 0
         },
@@ -103,8 +82,8 @@ export class DataService {
         },
         {
             id: 4,
-            avatar: "1.jpg",
-            video: "1.mp4",
+            avatar: "2.jpg",
+            video: "2.mp4",
             name: "Follow The Line",
             description: "This is a description of the pod",
             status: 0
@@ -239,4 +218,187 @@ export class DataService {
             status: 0
         }
     ];
+
+    private data2: any = [
+        {
+            id: 1,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 2,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 3,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 4,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 5,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        },
+
+        {
+            id: 6,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 7,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 8,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 9,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 10,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 11,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 12,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 13,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 14,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 15,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 16,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 17,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 18,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 19,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Follow The Line",
+            description: "This is a description of the pod",
+            status: 0
+        },
+        {
+            id: 20,
+            avatar: "cf.jpg",
+            video: "1.mp4",
+            name: "Does it float?",
+            description: "This is a description of the pod",
+            status: 0
+        }
+    ];
+
+    private _modules: any[] = [
+        {
+            id: 1,
+            avatar: 'cf.jpg',
+            name: 'Preschool Module 1',
+            description: '',
+            status: 1,
+            data: this.data1
+        },
+        {
+            id: 2,
+            avatar: 'cf.jpg',
+            name: 'Preschool Module 2',
+            description: '',
+            status: 0,
+            data: this.data2
+        }
+    ]
 }
