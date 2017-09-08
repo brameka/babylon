@@ -8,6 +8,10 @@ import { ModulePage } from '../pages/module/module';
 import {DataService} from '../services/data.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 
+import { InAppPurchase } from '@ionic-native/in-app-purchase';
+// $ ionic cordova plugin add cordova-plugin-inapppurchase
+// $ npm install --save @ionic-native/in-app-purchase
+
 @Component({
   templateUrl: 'app.html',
   providers: [DataService, AngularFireDatabase]
@@ -18,8 +22,11 @@ export class MyApp {
   rootPage: any = HomePage;
   modulePage: any = ModulePage;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, 
-              private dataService: DataService) {
+  constructor(public platform: Platform, 
+              public statusBar: StatusBar, 
+              public splashScreen: SplashScreen, 
+              private dataService: DataService,
+              private iap: InAppPurchase) {
     
     this.initializeApp();
 
@@ -31,6 +38,46 @@ export class MyApp {
     //   //this.module = x;
     // });
 
+  }
+
+  loadProducts(){
+    this.iap.getProducts(['com.yourapp.prod1', 'com.yourapp.prod2', ...])
+              .then(function (products) {
+                console.log(products);
+                /*
+                  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', currency: '...', price: '...', priceAsDecimal: '...' }, ...]
+                */
+              })
+              .catch(function (err) {
+                console.log(err);
+              });
+  }
+
+  buyProduct(){
+    this.iap
+        .buy('prod1')
+        .then((data)=> {
+          console.log(data);
+          // {
+          //   transactionId: ...
+          //   receipt: ...
+          //   signature: ...
+          // }
+        })
+        .catch((err)=> {
+          console.log(err);
+        });
+  }
+
+  restorePurchases(){
+    this.iap
+        .restorePurchases()
+        .then((data)=> {
+          console.log(data);
+        })
+        .catch((err)=> {
+          console.log(err);
+        });
   }
 
   initializeApp() {
