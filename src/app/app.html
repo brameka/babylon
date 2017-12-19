@@ -1,18 +1,29 @@
 <ion-menu [content]="content">
   
-  <ion-header>
+  <!--<ion-header class="app-menu">
     <ion-toolbar>
       <ion-title>Modules</ion-title>
     </ion-toolbar>
-  </ion-header>
+  </ion-header>-->
 
   <ion-content>
+    <div class="menu-header">
+      dev header
+    </div>
     <div class="app-content">
-      <ion-list>
-        <div class="module" *ngFor="let module of dataService.data">
-          <img menuClose src="assets/images/cf.jpg" (click)="details(module)"/>
-          <!--<button ion-button menuClose (click)="details(module)">{{module.id}}</button>-->
-        </div>
+      <ion-list no-lines>
+        <button ion-item (click)="openModal()">
+          <ion-icon name="md-construct" item-start></ion-icon>
+          Materials
+        </button>
+        <button ion-item (click)="openModal()">
+          <ion-icon name="md-heart" item-start></ion-icon>
+          About
+        </button> 
+        <button ion-item (click)="openModal()">
+          <ion-icon name="md-chatbubbles" item-start></ion-icon>
+          Connect
+        </button>
       </ion-list>
     </div>
   </ion-content>
@@ -20,4 +31,6 @@
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false">
+  
+</ion-nav>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ActionSheetController, AlertController, ToastController, PopoverController } from 'ionic-angular';
 import { PodPage } from '../pod/pod';
 import { Popover } from '../popover/popover';
+import { WelcomePopover } from '../popover/welcome.popover';
 import { DataService } from '../../services/data.service';
 import 'rxjs/Rx';
 
@@ -14,6 +15,7 @@ export class ModulePage {
 
   module:any = {};
   pods:any[] = [];
+  product:any;
 
   subscription: any;
 
@@ -26,6 +28,7 @@ export class ModulePage {
               private popover: PopoverController) {
 
     this.module = navParams.data.module;
+    this.product = navParams.data.product;
     this.pods = this.module.data;
 
     if(this.module.status == 0){
@@ -34,9 +37,7 @@ export class ModulePage {
 
   }
 
-  ionViewDidLoad(){
-
-  }
+  
 
   ionViewWillEnter(){
     
@@ -51,7 +52,8 @@ export class ModulePage {
     }else{
       var payload = {
         pod: pod,
-        module: this.module
+        module: this.module,
+        product: this.product
       };
       this.nav.push(PodPage, payload);
     }
@@ -59,6 +61,18 @@ export class ModulePage {
 
   presentPopover() {
     let popover = this.popover.create(Popover, {
+      module: this.module
+    })
+    popover.present();
+    popover.onDidDismiss((data) => {
+      if(data && data.success){
+        this.presentWelcome();
+      }
+    });
+  }
+
+  presentWelcome() {
+    let popover = this.popover.create(WelcomePopover, {
       module: this.module
     })
     popover.present();

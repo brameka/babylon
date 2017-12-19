@@ -1,37 +1,56 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, ModalController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Onboard } from '../pages/onboard/onboard';
 import { HomePage } from '../pages/home/home';
 import { ModulePage } from '../pages/module/module';
+import { DataService } from '../services/data.service';
+import { Storage } from '@ionic/storage';
+import { DetailsPage } from '../pages/details/details';
 
-import {DataService} from '../services/data.service';
-import { AngularFireDatabase } from 'angularfire2/database';
-
-import { InAppPurchase } from '@ionic-native/in-app-purchase';
 // $ ionic cordova plugin add cordova-plugin-inapppurchase
 // $ npm install --save @ionic-native/in-app-purchase
 
 @Component({
   templateUrl: 'app.html',
-  providers: [DataService, AngularFireDatabase]
+  providers: [DataService]
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   modules: any[] = [];
-  rootPage: any = HomePage;
+  onboarded: boolean = false;
+  rootPage: any;
   modulePage: any = ModulePage;
 
   constructor(public platform: Platform, 
               public statusBar: StatusBar, 
               public splashScreen: SplashScreen, 
               private dataService: DataService,
-              private iap: InAppPurchase) {
+              private storage: Storage,
+              private modal: ModalController) {
     
     this.initializeApp();
 
+    //this.storage.set('onboard', false);
+
+    this.storage.get('onboard').then((result) => {
+ 
+        if(result){
+          this.rootPage = HomePage;
+        } else {
+          this.rootPage = Onboard;
+          this.storage.set('onboard', true);
+        }
+
+    });
+
     dataService.modules$.subscribe(x => {
       this.modules = x;
+    });
+
+    dataService.onboarded$.subscribe(x => {
+      this.onboarded = x;
     });
 
     // dataService.selectedModule$.subscribe(x => {
@@ -40,51 +59,22 @@ export class MyApp {
 
   }
 
-  loadProducts(){
-    this.iap.getProducts(['com.yourapp.prod1', 'com.yourapp.prod2', ...])
-              .then(function (products) {
-                console.log(products);
-                /*
-                  [{ productId: 'com.yourapp.prod1', 'title': '...', description: '...', currency: '...', price: '...', priceAsDecimal: '...' }, ...]
-                */
-              })
-              .catch(function (err) {
-                console.log(err);
-              });
-  }
-
-  buyProduct(){
-    this.iap
-        .buy('prod1')
-        .then((data)=> {
-          console.log(data);
-          // {
-          //   transactionId: ...
-          //   receipt: ...
-          //   signature: ...
-          // }
-        })
-        .catch((err)=> {
-          console.log(err);
-        });
-  }
-
-  restorePurchases(){
-    this.iap
-        .restorePurchases()
-        .then((data)=> {
-          console.log(data);
-        })
-        .catch((err)=> {
-          console.log(err);
-        });
-  }
+  
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+
+      if (this.statusBar) {
+          //this.statusBar.overlaysWebView(true);
+          //this.statusBar.styleLightContent();
+          //this.statusBar.backgroundColorByHexString('#14c1f3');
+      }
+
+      //this.statusBar.overlaysWebView(true);
       this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#14c1f3');
       this.splashScreen.hide();
     });
   }
@@ -99,5 +89,10 @@ export class MyApp {
     this.nav.setRoot(this.modulePage, {
       module: module
     });
+  }
+  
+  openModal() {
+    let modal = this.modal.create(DetailsPage);
+    modal.present();
   }
 }

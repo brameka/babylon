@@ -20,7 +20,18 @@ Then, to run it, cd into `mySideMenu` and run:
 ```bash
 $ ionic cordova platform add ios
 $ ionic cordova run ios
+$ ionic cordova run ios --device --livereload
 ```
 
 Substitute ios for android if not on a Mac.
 
+https://github.com/ionic-team/ionic/issues/12849#issuecomment-328472880
+https://issues.apache.org/jira/browse/CB-12890
+https://issues.apache.org/jira/browse/CB-12886
+https://github.com/kim3er/ios11-scroll-offset
+
+https://weibomiaopai.com/online-video-downloader/youtube
+
+https://ezgif.com/optimize/ezgif-5-cedce90c59.gif
+
+https://github.com/ionic-team/ionic/issues/12849#issuecomment-328472880

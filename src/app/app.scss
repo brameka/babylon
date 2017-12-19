@@ -15,20 +15,69 @@
 // for the .md, .ios, or .wp mode classes. The mode class is
 // automatically applied to the <body> element in the app.
 
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    padding-top: 25px;
+    height: 0;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
 .no-shadow {
     box-shadow: none !important;
     transition: none !important;
 }
 
-.app-content {
+.toolbar-background-md {
+    background: #6142f4;
+    // border-color: #166b47;
+    // background: #3aca8d;
+    color: #fff;
+}
+
+.toolbar-title-md {
+    color: #fff;
+}
+
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+    color: #3821a7;
+}
+
+.back-button.show-back-button {
+    color: #fff;
+}
+
+.app-menu .toolbar-background-md {
+    // background: #ff0000;
+}
+
+.menu-header {
     width: 100%;
-    padding: 5px 10px;
+    min-height: 150px;
+    background: #ff0000;
 }
 
-.module {
-    margin-top: 5px;
+.app-menu {
+    height: 200px;
 }
 
-.popover-md .popover-content {
-        min-width: 300px;
-    }
+.app-menu .item-md ion-icon[item-left] + .item-inner, .item-md ion-icon[item-left] + .item-input, .item-md ion-icon[item-start] + .item-inner, .item-md ion-icon[item-start] + .item-input {
+    margin-left: 15px;
+    color: #666;
+}
+
+.item-md ion-icon {
+    color: #333;
+    font-size: 22px;
+    margin-top: 18px !important;
+}
+
+// .popover-md .popover-content {
+//     width: 300px;
+// }
