@@ -37,8 +37,22 @@
         </div>-->
 
         <div class="video-container">
+            
+            <video #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay muted>
+                <source src="https://s3-us-west-2.amazonaws.com/killertraders/3.mp4" type="video/mp4"/>
+            </video>
 
-            <iframe src="https://player.vimeo.com/video/241906552?autoplay=1&loop=1&title=0&byline=1&portrait=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <!--<video #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay muted (click)="play()">-->
+                <!--<source src="https://player.vimeo.com/external/76336826.sd.mp4?s=dd361715fad172bf26ba0ad91635c4f9" type="video/mp4"/>-->
+                <!--<source src="assets/video/small.mp4" type="video/mp4">-->
+                <!--<source src="assets/video/{{pod.video}}" type="video/mp4">-->
+                <!--<source src="https://my.mixtape.moe/eifrfq.mp4" type="video/mp4">-->
+                <!--<source src="https://my.mixtape.moe/oaoors.mp4" type="video/mp4">-->
+            <!--</video>-->
+
+            <!--<div #player></div>-->
+
+            <!--<iframe src="https://player.vimeo.com/video/241906552?autoplay=1&loop=1&title=0&byline=1&portrait=1&background=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
 
             <!--<video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" playsinline autoplay loop class="video">
                 <source src="https://player.vimeo.com/external/76336826.sd.mp4?s=dd361715fad172bf26ba0ad91635c4f9" type="video/mp4"/>
@@ -61,13 +75,7 @@
             </video>-->
 
 
-            <!--<video #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay muted (click)="play()">-->
-                <!--<source src="https://player.vimeo.com/external/76336826.sd.mp4?s=dd361715fad172bf26ba0ad91635c4f9" type="video/mp4"/>-->
-                <!--<source src="assets/video/small.mp4" type="video/mp4">-->
-                <!--<source src="assets/video/{{pod.video}}" type="video/mp4">-->
-                <!--<source src="https://my.mixtape.moe/eifrfq.mp4" type="video/mp4">-->
-                <!--<source src="https://my.mixtape.moe/oaoors.mp4" type="video/mp4">-->
-            <!--</video>-->
+            
 
             <!--<iframe src="https://player.vimeo.com/video/241906552" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
 
@@ -86,12 +94,9 @@
             <!--<ion-icon *ngIf="isMuted" class="video-container__sound" name="md-volume-off" (click)="volume()"></ion-icon>
             <ion-icon *ngIf="!isMuted" class="video-container__sound" name="md-volume-up" (click)="volume()"></ion-icon>-->
         </div>
-        
 
         <ion-card-content>
-            <p>
-                {{pod.description}}
-            </p>
+            <div [innerHTML]="pod.description"></div>
         </ion-card-content>
     </ion-card>
 

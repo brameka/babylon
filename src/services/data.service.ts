@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/Rx';
-import * as _ from "lodash";
 
 @Injectable()
 export class DataService {
@@ -64,11 +63,6 @@ export class DataService {
         this.assess.next(pod);
     }
 
-    private saveSchedule() {
-        this.storage.set("schedule", this.scheduleData);
-        this.schedules.next(this.scheduleData);
-    }
-
     public save () {
         this.storage.set("modules", this.data);
         this.storage.set("badges", this.badgeData);
@@ -87,7 +81,7 @@ export class DataService {
         this.save();
     }
 
-    private completed(module: any): number {
+    public completed(module: any): number {
         let count = 0;
         for(let pod of module.data){
             if(pod.status) {
@@ -133,7 +127,28 @@ export class DataService {
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Follow The Line",
-            description: "This is a description of the pod",
+            description: `<h3>Thing we gonna nail:</h3>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                          </p>
+                          <ul>
+                            <li>Sensory Skills</li>
+                            <li>Hand Eye Coordination</li>
+                            <li>Non-annoying</li>
+                            <li>Easy</li>
+                          </ul>
+                          <h3>Materials:</h3>
+                          <ul>
+                            <li>Sensory Skills</li>
+                            <li>Hand Eye Coordination</li>
+                            <li>Non-annoying</li>
+                            <li>Easy</li>
+                          </ul>
+                          
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                          </p>
+                          `,
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -150,7 +165,7 @@ export class DataService {
             avatar: "2.jpg",
             video: "2.mp4",
             name: "Big Or Little",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -166,8 +181,8 @@ export class DataService {
             gif: '3.gif',
             avatar: "3.jpg",
             video: "3.mp4",
-            name: "Colors",
-            description: "This is a description of the pod",
+            name: "Colours",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -183,8 +198,8 @@ export class DataService {
             gif: '4.gif',
             avatar: "4.jpg",
             video: "4.mp4",
-            name: "Float Or Sink",
-            description: "This is a description of the pod",
+            name: "Does It Float",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -201,7 +216,7 @@ export class DataService {
             avatar: "5.jpg",
             video: "5.mp4",
             name: "Stacking Numbers",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -218,7 +233,7 @@ export class DataService {
             avatar: "6.jpg",
             video: "6.mp4",
             name: "Read & Draw",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -235,7 +250,7 @@ export class DataService {
             avatar: "7.jpg",
             video: "7.mp4",
             name: "Trace The Shape",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -251,8 +266,8 @@ export class DataService {
             gif: '8.gif',
             avatar: "8.jpg",
             video: "8.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Stomp The Shape",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -269,7 +284,7 @@ export class DataService {
             avatar: "9.jpg",
             video: "9.mp4",
             name: "Follow The Path",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -285,8 +300,8 @@ export class DataService {
             gif: '1.gif',
             avatar: "10.jpg",
             video: "10.mp4",
-            name: "Does it float?",
-            description: "This is a description of the pod",
+            name: "Video Placeholder",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -302,8 +317,8 @@ export class DataService {
             gif: '11.gif',
             avatar: "11.jpg",
             video: "11.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Same & Different",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -320,7 +335,7 @@ export class DataService {
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Follow The Line",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -336,8 +351,8 @@ export class DataService {
             gif: '13.gif',
             avatar: "13.jpg",
             video: "13.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Name Puzzle",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -353,8 +368,8 @@ export class DataService {
             gif: '14.gif',
             avatar: "14.jpg",
             video: "14.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Colour Pegs",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -370,8 +385,8 @@ export class DataService {
             gif: '15.gif',
             avatar: "15.jpg",
             video: "15.mp4",
-            name: "Does it float?",
-            description: "This is a description of the pod",
+            name: "Number Pegs",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -387,8 +402,8 @@ export class DataService {
             gif: '16.gif',
             avatar: "16.jpg",
             video: "16.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Sorting Big & Little",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -404,8 +419,8 @@ export class DataService {
             gif: '17.gif',
             avatar: "17.jpg",
             video: "17.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Pom Pom Numbers",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -421,8 +436,8 @@ export class DataService {
             gif: '18.gif',
             avatar: "18.jpg",
             video: "18.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Memory",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -438,8 +453,8 @@ export class DataService {
             gif: '19.gif',
             avatar: "19.jpg",
             video: "19.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Roll The Number",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -455,8 +470,8 @@ export class DataService {
             gif: '20.gif',
             avatar: "20.jpg",
             video: "20.mp4",
-            name: "Does it float?",
-            description: "This is a description of the pod",
+            name: "Find Your Name",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -472,8 +487,8 @@ export class DataService {
             gif: '21.gif',
             avatar: "21.jpg",
             video: "21.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "On & Off",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -489,8 +504,8 @@ export class DataService {
             gif: '22.gif',
             avatar: "22.jpg",
             video: "22.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Balloon (Up & Down)",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -506,8 +521,8 @@ export class DataService {
             gif: '23.gif',
             avatar: "23.jpg",
             video: "23.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "Over & Under",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -523,8 +538,8 @@ export class DataService {
             gif: '24.gif',
             avatar: "24.jpg",
             video: "24.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
+            name: "On Top & Under",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -541,7 +556,7 @@ export class DataService {
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Does it float?",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -558,7 +573,7 @@ export class DataService {
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Follow The Line",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -575,7 +590,7 @@ export class DataService {
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Follow The Line",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -592,7 +607,7 @@ export class DataService {
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Follow The Line",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -609,7 +624,7 @@ export class DataService {
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Follow The Line",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -622,11 +637,11 @@ export class DataService {
         },
         {
             id: 30,
-            gif: '6 .gif',
+            gif: '6.gif',
             avatar: "1.jpg",
             video: "1.mp4",
             name: "Does it float?",
-            description: "This is a description of the pod",
+            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
             status: 0,
             completion: {
                 image: 'beginner.png',
@@ -639,169 +654,7 @@ export class DataService {
         }
     ];
 
-    private data2: any = [
-        {
-            id: 1,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 2,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 3,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 4,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 5,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Does it float?",
-            description: "This is a description of the pod",
-            status: 0
-        },
-
-        {
-            id: 6,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 7,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 8,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 9,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 10,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Does it float?",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 11,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 12,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 13,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 14,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 15,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Does it float?",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 16,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 17,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 18,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 19,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Follow The Line",
-            description: "This is a description of the pod",
-            status: 0
-        },
-        {
-            id: 20,
-            avatar: "cf.jpg",
-            video: "1.mp4",
-            name: "Does it float?",
-            description: "This is a description of the pod",
-            status: 0
-        }
-    ];
+   
 
     private _modules: any[] = [
         {
@@ -811,14 +664,6 @@ export class DataService {
             description: '',
             status: 1,
             data: this.data1
-        },
-        {
-            id: 2,
-            avatar: 'cf.jpg',
-            name: 'Average Mum',
-            description: '',
-            status: 0,
-            data: this.data2
         }
     ]
 }

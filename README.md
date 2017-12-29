@@ -35,3 +35,10 @@ https://weibomiaopai.com/online-video-downloader/youtube
 https://ezgif.com/optimize/ezgif-5-cedce90c59.gif
 
 https://github.com/ionic-team/ionic/issues/12849#issuecomment-328472880
+
+cordova plugin save
+	cordova platform rm ios
+	cordova platform add ios
+
+***very important***
+ionic cordova platform add ios@4.4.0

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { DataService } from '../../services/data.service';
 
 @Component({
 template: `
@@ -21,7 +20,7 @@ export class Thumbsover {
 
   pod: any;
 
-  constructor(public viewCtrl: ViewController, private socialSharing: SocialSharing, private service: DataService) {
+  constructor(public viewCtrl: ViewController, private socialSharing: SocialSharing) {
     this.pod = viewCtrl.data.pod;
   }
 

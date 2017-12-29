@@ -1,14 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ActionSheetController, AlertController, ToastController } from 'ionic-angular';
-import { PodPage } from '../pod/pod';
-import { Popover } from '../popover/popover';
-import { DataService } from '../../services/data.service';
+import { NavController } from 'ionic-angular';
 import { HomePage } from '../home/home';
-import 'rxjs/Rx';
-
-import { PopoverController } from 'ionic-angular';
-
-
 
 @Component({
   selector: 'onboarding',

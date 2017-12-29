@@ -32,8 +32,6 @@ export class MyApp {
     
     this.initializeApp();
 
-    //this.storage.set('onboard', false);
-
     this.storage.get('onboard').then((result) => {
  
         if(result){
@@ -44,19 +42,12 @@ export class MyApp {
         }
 
     });
-
-    dataService.modules$.subscribe(x => {
+    this.dataService.modules$.subscribe(x => {
       this.modules = x;
     });
-
-    dataService.onboarded$.subscribe(x => {
+    this.dataService.onboarded$.subscribe(x => {
       this.onboarded = x;
     });
-
-    // dataService.selectedModule$.subscribe(x => {
-    //   //this.module = x;
-    // });
-
   }
 
   

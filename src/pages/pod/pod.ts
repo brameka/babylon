@@ -7,6 +7,10 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 
+// import Player from '@vimeo/player';
+// import * as Player from "@vimeo/player/dist/player.js";
+
+
 @Component({
   selector: 'page-pod',
   templateUrl: 'pod.html',
@@ -14,6 +18,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 
 export class PodPage {
   @ViewChild('videoPlayer') videoplayer: any;
+  @ViewChild('player') player: any;
   videoState: boolean = true;
   isMuted:boolean;
   pod: any;
@@ -29,6 +34,7 @@ export class PodPage {
               ) {
     this.pod = this.navParams.get('pod');
     this.module = this.navParams.get('module');
+
   }
 
   ionViewWillEnter(){
@@ -37,10 +43,34 @@ export class PodPage {
   }
 
   ionViewDidLoad(){
-    // this.youtube.openVideo('VXGUiFm-gMc');
-    // this.videoplayer.onloadstart = function() {
-    //     console.log('start load');
-    // };
+
+    // const player = new Player(this.player.nativeElement, {
+    //     id: 232822119,
+    //     width: 640,
+    //     autoplay: true,
+    //     background: true,
+    //     loop: true,
+    //     portrait: true,
+    //     title: false
+    // });
+
+    // player.setLoop(true).then(function(loop) {
+    // }).catch(function(error) {
+    // });
+
+    // player.play().then(function() {
+    // }).catch(function(error) {
+    //     switch (error.name) {
+    //         case 'PasswordError':
+    //             break;
+
+    //         case 'PrivacyError':
+    //             break;
+
+    //         default:
+    //             break;
+    //     }
+    // });
   }
 
   podClick(pod: any){

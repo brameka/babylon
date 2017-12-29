@@ -18,7 +18,7 @@ export class HomePage {
   module:any = {};
   pods:any[] = [];
   product:any;
-
+  completed: number;
   subscription: any;
   assessment: any;
 
@@ -34,6 +34,7 @@ export class HomePage {
       this.modules = x;
       this.module = this.modules[0];
       this.pods = this.module.data;
+      this.completed = this.service.completed(this.module);
     });
 
     service.refresh();
@@ -56,7 +57,7 @@ export class HomePage {
   }
 
   ionViewDidEnter() {
-
+    this.completed = this.service.completed(this.module);
   }
 
   ionViewWillUnload(){

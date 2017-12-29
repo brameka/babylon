@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ViewController } from 'ionic-angular';
-import { DataService } from '../../services/data.service';
 
 @Component({
 template: `
@@ -16,7 +15,7 @@ template: `
 })
 export class Popover {
   badge: any;
-  constructor(public viewCtrl: ViewController, private dataService: DataService) {
+  constructor(public viewCtrl: ViewController) {
       this.badge = viewCtrl.data.badge;
   }
 
