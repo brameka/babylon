@@ -5,7 +5,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { PodPage } from '../pages/pod/pod';
 import { DetailsPage } from '../pages/details/details';
-import { ModulePage } from '../pages/module/module';
 import { Onboard } from '../pages/onboard/onboard';
 import { Popover } from '../pages/popover/popover';
 import { Thumbsover } from '../pages/popover/thumbsover';
@@ -17,12 +16,13 @@ import { IonicStorageModule } from '@ionic/storage';
 import { DataService } from '../services/data.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
+import { NativeAudio } from '@ionic-native/native-audio';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
     PodPage,
-    ModulePage,
     Onboard,
     Popover,
     Thumbsover,
@@ -45,7 +45,6 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     Onboard,
     HomePage,
     PodPage,
-    ModulePage,
     Popover,
     Thumbsover,
     WelcomePopover,
@@ -56,6 +55,7 @@ import { SocialSharing } from '@ionic-native/social-sharing';
     SplashScreen,
     DataService,
     SocialSharing,
+    NativeAudio,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

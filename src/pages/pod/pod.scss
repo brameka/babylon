@@ -70,9 +70,39 @@ page-pod {
 
     ul {
         -webkit-padding-start: 20px;
-        font-size: 1.4rem;
+        // font-size: 16px;
         -webkit-margin-before: 0.5em;
         -webkit-margin-after: 0.5em;
     }
 
+    h3 {
+        // font-size: 16px !important;
+    }
+
+    .card-content-md {
+        padding: 20px;
+    }
+
+    p {
+        margin-bottom: 15px !important;
+    }
+
+    .tip {
+        display: inline-block;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #4285f4;
+    }
+
+    .tip-icon {
+        width: 20px;
+        float: left;
+        margin-top: 2px;
+        font-weight: 600;
+    }
+
+    .tip-message {
+        width: calc(100% - 25px);
+        float: left;
+    }
 }

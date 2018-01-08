@@ -78,6 +78,56 @@
     margin-top: 18px !important;
 }
 
-// .popover-md .popover-content {
-//     width: 300px;
-// }
+.popover-md .popover-content {
+    width: 300px;
+}
+
+.fb-btn {
+    background-color: #294ea2;
+}
+
+.complete-btn {
+    margin-bottom: 5px;
+    width: 100%; 
+    box-shadow: none;
+}
+
+.complete-btns {
+    padding: 5px 10px;
+}
+
+.nailed-it {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 58px;
+}
+
+.nailed-it img {
+    width: 80%;
+}
+
+.leveled-up {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 5px;
+}
+
+.leveled-up img {
+    width: 90%;
+}
+
+.level-gif {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+.level {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 5px;
+}

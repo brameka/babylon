@@ -1,20 +1,80 @@
+page-details {
 
     ion-content {
-        // background: #e9ebee;
+        background: #e9ebee;
+    }
+
+    .content {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .content-md {
+        background: #e9ebee;
+    }
+
+    .video {
+        width: 100%    !important;
+        height: auto   !important;
+        background: #000;
     }
 
     .video-container {
         position: relative;
         padding-bottom: 56.25%; /* 16:9 */
-        padding-top: 25px;
         height: 0;
+        padding-top: 0;
+        background: #000;
+
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        
+
+        &__play {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: $white;
+            font-size: 24px;
+        }
+
+        &__sound {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: $white;
+            font-size: 24px;
+        }
     }
-    .video-container iframe {
+
+    .spinner {
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
     }
+
+    .card-md h3 {
+        font-weight: bold;
+    }
+
+    ul {
+        -webkit-padding-start: 20px;
+        -webkit-margin-before: 0.5em;
+        -webkit-margin-after: 0.5em;
+    }
+
+    .card-content-md {
+        padding: 20px;
+    }
+
+    p {
+        margin-bottom: 15px !important;
+    }
+}
+
 
 

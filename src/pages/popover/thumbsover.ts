@@ -4,21 +4,28 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
 template: `
-    <div style="width: 100%; padding: 25px 15px 15px 15px; text-align: center;">
-        <div class="img" style="width: 100%; min-height: 220px; padding: 0">
-            <img src="assets/images/{{pod.completion.image}}" alt="">
+    <div style="width: 100%; padding: 0; text-align: center; position: relative; min-height: 260px">
+        <div class="nailed-it">
+            <img src="assets/png/nailed-it.png" alt=""/>
         </div>
-        <button ion-button icon-left (click)="share()" color="primary" style="width: 100%; box-shadow: none; margin: none">
-            <ion-icon name="logo-facebook"></ion-icon> SHARE
-        </button>
-        <button ion-button (click)="complete()" color="primary" style="width: 100%; box-shadow: none; margin: none">Complete</button>
-        <button ion-button (click)="close()" color="light" style="width: 100%; box-shadow: none; margin: none">Cancel</button>
+        <div class="img" style="width: 100%; padding: 0">
+            <!-- <img src="assets/images/{{pod.completion.image}}" alt=""> -->
+            <img src="assets/images/{{pod.avatar}}" alt=""/>
+        </div>
+        <div class="complete-btns">
+            <!-- <button class="complete-btn" ion-button icon-left (click)="share()" color="primary">
+                <ion-icon name="logo-facebook"></ion-icon> SHARE
+            </button> -->
+            <button class="complete-btn" ion-button (click)="complete()" color="primary">Complete</button>
+            <button class="complete-btn" ion-button (click)="close()" color="light">Cancel</button>
+        </div>
     </div>
 `
 })
 export class Thumbsover {
 
   pod: any;
+  image: string;
 
   constructor(public viewCtrl: ViewController, private socialSharing: SocialSharing) {
     this.pod = viewCtrl.data.pod;

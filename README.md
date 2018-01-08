@@ -42,3 +42,5 @@ cordova plugin save
 
 ***very important***
 ionic cordova platform add ios@4.4.0
+
+Concepts build on each other

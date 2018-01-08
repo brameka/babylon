@@ -8,6 +8,11 @@ import 'rxjs/Rx';
 
 import { PopoverController } from 'ionic-angular';
 
+import { NativeAudio } from '@ionic-native/native-audio';
+
+declare var navigator: any;
+declare var Connection: any;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -29,7 +34,8 @@ export class HomePage {
               public alertController: AlertController,
               private toastController: ToastController,
               private popover: PopoverController,
-              private modal: ModalController) {
+              private modal: ModalController,
+              private nativeAudio: NativeAudio) {
     this.subscription = service.modules$.subscribe(x => {
       this.modules = x;
       this.module = this.modules[0];
@@ -41,11 +47,18 @@ export class HomePage {
 
     this.assessment = service.assess$.subscribe(pod => {
       const badge = service.getBadge(this.module);
-      if(badge) {
-        // this.presentPopover(badge);
-      }
+      this.presentPopover(badge);
+      // if(badge) {
+      //   this.presentPopover(badge);
+      // }
     });
 
+    this.nativeAudio.preloadSimple('levelup', 'assets/audio/levelup.mp3').then(function(){
+      console.log('audio loaded');
+    }, function(err) {
+      console.log('audio error: ', err);
+    })
+    
   }
 
   ionViewDidLoad(){
@@ -74,12 +87,17 @@ export class HomePage {
   }
 
   presentPopover(badge: any) {
+    const self = this;
     let popover = this.popover.create(Popover, {
       badge: badge
     });
-    popover.present();
+    popover.present().then(function() {
+      self.nativeAudio.play('levelup');
+    });
+    
     popover.onDidDismiss((data) => {
     });
+
   }
 
   options() {

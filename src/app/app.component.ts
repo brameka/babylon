@@ -4,13 +4,9 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Onboard } from '../pages/onboard/onboard';
 import { HomePage } from '../pages/home/home';
-import { ModulePage } from '../pages/module/module';
 import { DataService } from '../services/data.service';
 import { Storage } from '@ionic/storage';
 import { DetailsPage } from '../pages/details/details';
-
-// $ ionic cordova plugin add cordova-plugin-inapppurchase
-// $ npm install --save @ionic-native/in-app-purchase
 
 @Component({
   templateUrl: 'app.html',
@@ -21,7 +17,6 @@ export class MyApp {
   modules: any[] = [];
   onboarded: boolean = false;
   rootPage: any;
-  modulePage: any = ModulePage;
 
   constructor(public platform: Platform, 
               public statusBar: StatusBar, 
@@ -50,8 +45,6 @@ export class MyApp {
     });
   }
 
-  
-
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -74,12 +67,6 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-  }
-
-  details(module){
-    this.nav.setRoot(this.modulePage, {
-      module: module
-    });
   }
   
   openModal() {

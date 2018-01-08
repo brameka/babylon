@@ -15,88 +15,29 @@
 <ion-content>
     <ion-fab right bottom>
         <button ion-fab color="primary" (click)="complete()"><ion-icon name="md-checkmark"></ion-icon></button>
-        <!--<ion-fab-list side="left">
-            <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-            <button ion-fab (click)="complete()"><ion-icon name="md-checkmark-circle"></ion-icon></button>
-        </ion-fab-list>-->
     </ion-fab>
     <ion-card>
-
-        <!--<div class="videoWrapper">-->
-            <!--<iframe width="100%" src="https://www.youtube.com/embed/VXGUiFm-gMc?rel=0&amp;controls=0&amp;showinfo=0&amp;modestbranding=1" frameborder="0" allowfullscreen></iframe>-->
-            <!--<iframe allowFullScreen frameborder="0" height="564" mozallowfullscreen src="https://player.vimeo.com/video/232822213" webkitAllowFullScreen width="640"></iframe>
-            <iframe src="https://player.vimeo.com/video/232822119?autoplay=1&loop=1&title=0&byline=0&portrait=0&background=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-        <!--</div>-->
-
-        <!--<div class="video-container">
-            <video tappable #videoPlayer class="video" preload loop webkit-playsinline playsinline autoplay muted (click)="play()">
-                <source src="https://www.dropbox.com/s/bxmw6kczlfa1xi6/2.mp4?dl=1" type="video/mp4">
-            </video>
-            <ion-icon *ngIf="!volumeState" class="video-container__sound" name="md-volume-off" (click)="volume()"></ion-icon>
-            <ion-icon *ngIf="volumeState" class="video-container__sound" name="md-volume-up" (click)="volume()"></ion-icon>
-        </div>-->
-
         <div class="video-container">
-            
-            <video #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay muted>
-                <source src="https://s3-us-west-2.amazonaws.com/killertraders/3.mp4" type="video/mp4"/>
+            <video #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay>
+                <source src="http://dt9l6ktqnhlee.cloudfront.net/v{{pod.video}}" type="video/mp4"/>
             </video>
-
-            <!--<video #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay muted (click)="play()">-->
-                <!--<source src="https://player.vimeo.com/external/76336826.sd.mp4?s=dd361715fad172bf26ba0ad91635c4f9" type="video/mp4"/>-->
-                <!--<source src="assets/video/small.mp4" type="video/mp4">-->
-                <!--<source src="assets/video/{{pod.video}}" type="video/mp4">-->
-                <!--<source src="https://my.mixtape.moe/eifrfq.mp4" type="video/mp4">-->
-                <!--<source src="https://my.mixtape.moe/oaoors.mp4" type="video/mp4">-->
-            <!--</video>-->
-
-            <!--<div #player></div>-->
-
-            <!--<iframe src="https://player.vimeo.com/video/241906552?autoplay=1&loop=1&title=0&byline=1&portrait=1&background=1" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-
-            <!--<video controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" playsinline autoplay loop class="video">
-                <source src="https://player.vimeo.com/external/76336826.sd.mp4?s=dd361715fad172bf26ba0ad91635c4f9" type="video/mp4"/>
-            </video>-->
-
-            <!--<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>-->
-            <!--<div class='embed-container'>-->
-                <!--<iframe src='https://player.vimeo.com/video/232822119?autoplay=1&loop=1&title=0&byline=0&portrait=0&background=1' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>-->
-                <!--<iframe src="https://player.vimeo.com/video/243653373?title=0&byline=0&portrait=0" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> -->
-            <!--</div>-->
-
-            <!--<iframe src="https://player.vimeo.com/video/232822119" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-
-            <!--<video class="video" preload="metadata" autoplay="autoplay" loop webkit-playsinline="webkit-playsinline" playsinline autoplay muted>
-                <source src="https://player.vimeo.com/external/76336826.sd.mp4?s=dd361715fad172bf26ba0ad91635c4f9" type="video/mp4"/>
-            </video>-->
-
-            <!--<video controls="controls" class="video" preload="metadata" autoplay="autoplay" loop webkit-playsinline="webkit-playsinline" playsinline autoplay muted>
-                <source src="http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">
-            </video>-->
-
-
-            
-
-            <!--<iframe src="https://player.vimeo.com/video/241906552" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
-
-            
-
-            <!--<video #videoPlayer class="video" preload loop webkit-playsinline playsinline autoplay muted (click)="play()">-->
-                <!--<source src="http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4" type="video/mp4">-->
-                <!--<source src="assets/video/{{pod.video}}" type="video/mp4">-->
-                <!--<source src="https://my.mixtape.moe/eifrfq.mp4" type="video/mp4">-->
-                <!--<source src="https://my.mixtape.moe/oaoors.mp4" type="video/mp4">-->
-            <!--</video>-->
-
             <!--<ion-icon *ngIf="videoState" class="video-container__play" name="md-play" (click)="play()"></ion-icon>
             <ion-icon *ngIf="!videoState" class="video-container__play" name="md-pause" (click)="play()"></ion-icon>-->
 
-            <!--<ion-icon *ngIf="isMuted" class="video-container__sound" name="md-volume-off" (click)="volume()"></ion-icon>
-            <ion-icon *ngIf="!isMuted" class="video-container__sound" name="md-volume-up" (click)="volume()"></ion-icon>-->
+            <ion-icon *ngIf="isMuted" class="video-container__sound" name="md-volume-off" (click)="volume()"></ion-icon>
+            <ion-icon *ngIf="!isMuted" class="video-container__sound" name="md-volume-up" (click)="volume()"></ion-icon>
         </div>
 
         <ion-card-content>
             <div [innerHTML]="pod.description"></div>
+            <div *ngIf="pod.tips" class="tip">
+                <div class="tip-icon">
+                    <ion-icon name="md-information-circle"></ion-icon>
+                </div>
+                <div class="tip-message">
+                    <strong>TIP:</strong> {{pod.tips}}
+                </div>
+            </div>
         </ion-card-content>
     </ion-card>
 

@@ -2,14 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { NavController, NavParams, PopoverController, ActionSheetController, ToastController} from 'ionic-angular';
 import { DataService } from '../../services/data.service';
 import { Thumbsover } from '../popover/thumbsover';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/catch';
-import 'rxjs/add/operator/debounceTime';
-import 'rxjs/add/operator/distinctUntilChanged';
-
-// import Player from '@vimeo/player';
-// import * as Player from "@vimeo/player/dist/player.js";
-
 
 @Component({
   selector: 'page-pod',
@@ -38,46 +30,18 @@ export class PodPage {
   }
 
   ionViewWillEnter(){
-    //this.videoplayer.nativeElement.muted = this.data.isMuted;
-    //this.isMuted = this.data.isMuted;
+    this.videoplayer.nativeElement.muted = this.data.isMuted;
+    this.isMuted = this.data.isMuted;
   }
 
-  ionViewDidLoad(){
-
-    // const player = new Player(this.player.nativeElement, {
-    //     id: 232822119,
-    //     width: 640,
-    //     autoplay: true,
-    //     background: true,
-    //     loop: true,
-    //     portrait: true,
-    //     title: false
-    // });
-
-    // player.setLoop(true).then(function(loop) {
-    // }).catch(function(error) {
-    // });
-
-    // player.play().then(function() {
-    // }).catch(function(error) {
-    //     switch (error.name) {
-    //         case 'PasswordError':
-    //             break;
-
-    //         case 'PrivacyError':
-    //             break;
-
-    //         default:
-    //             break;
-    //     }
-    // });
-  }
+  ionViewDidLoad(){}
 
   podClick(pod: any){
     console.log("pod clicked");
   }
 
   presentPopover() {
+    this.videoplayer.nativeElement.pause();
     let self = this;
     let popover = this.popover.create(Thumbsover, {
       pod: self.pod
@@ -89,6 +53,8 @@ export class PodPage {
         self.showToast("Activity completed");
         self.data.assessment(self.pod);
         self.goback();
+      } else {
+        self.videoplayer.nativeElement.play();
       }
     });
     popover.present();
@@ -107,15 +73,10 @@ export class PodPage {
     this.data.isMuted = !this.data.isMuted;
     this.videoplayer.nativeElement.muted = this.data.isMuted;
     this.isMuted = this.data.isMuted;
-    
-    //this.videoplayer.nativeElement.muted = this.volumeState;
-    //this.volumeState = !this.volumeState;
   }
 
   complete(){
     this.presentPopover();
-    // this.showToast("Activity completed");
-    // this.goback();
   }
 
   reset(){
@@ -146,9 +107,7 @@ export class PodPage {
   }
 
   goback() {
-
     this.navCtrl.pop({}, () => {
-      // this.presentPopover();
     })
   }
 
