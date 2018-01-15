@@ -5,13 +5,12 @@ import { PodPage } from '../pod/pod';
 import { Popover } from '../popover/popover';
 import { DataService } from '../../services/data.service';
 import 'rxjs/Rx';
-
 import { PopoverController } from 'ionic-angular';
-
 import { NativeAudio } from '@ionic-native/native-audio';
+import { Vibration } from '@ionic-native/vibration';
 
-declare var navigator: any;
-declare var Connection: any;
+// declare var navigator: any;
+// declare var Connection: any;
 
 @Component({
   selector: 'page-home',
@@ -35,7 +34,8 @@ export class HomePage {
               private toastController: ToastController,
               private popover: PopoverController,
               private modal: ModalController,
-              private nativeAudio: NativeAudio) {
+              private nativeAudio: NativeAudio,
+              private vibration :Vibration) {
     this.subscription = service.modules$.subscribe(x => {
       this.modules = x;
       this.module = this.modules[0];
@@ -47,10 +47,9 @@ export class HomePage {
 
     this.assessment = service.assess$.subscribe(pod => {
       const badge = service.getBadge(this.module);
-      this.presentPopover(badge);
-      // if(badge) {
-      //   this.presentPopover(badge);
-      // }
+      if(badge) {
+        this.presentPopover(badge);
+      }
     });
 
     this.nativeAudio.preloadSimple('levelup', 'assets/audio/levelup.mp3').then(function(){
@@ -78,6 +77,7 @@ export class HomePage {
   }
 
   details (pod) {
+    // this.vibrate();
     var payload = {
       pod: pod,
       module: this.module,
@@ -167,6 +167,10 @@ export class HomePage {
 
   access() {
 
+  }
+
+  vibrate(){
+    this.vibration.vibrate(1000);
   }
 
 }

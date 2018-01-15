@@ -17,6 +17,7 @@ import { DataService } from '../services/data.service';
 import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { NativeAudio } from '@ionic-native/native-audio';
+import { Vibration } from '@ionic-native/vibration';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { NativeAudio } from '@ionic-native/native-audio';
     DataService,
     SocialSharing,
     NativeAudio,
+    Vibration,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

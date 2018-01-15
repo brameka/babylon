@@ -4,6 +4,27 @@ page-details {
         background: #e9ebee;
     }
 
+    .hero {
+        position: relative;
+    }
+
+    .close .button-md.activated, .close .button-md {
+        background-color: transparent;
+        box-shadow: none;
+    }
+
+    .close {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+    }
+
+    .details__content {
+        padding: 20px;
+        padding-top: 10px;
+        line-height: 22px;
+    }
+
     .content {
         position: absolute;
         width: 100%;

@@ -17,16 +17,18 @@
         <button ion-fab color="primary" (click)="complete()"><ion-icon name="md-checkmark"></ion-icon></button>
     </ion-fab>
     <ion-card>
-        <div class="video-container">
-            <video #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay>
-                <source src="http://dt9l6ktqnhlee.cloudfront.net/v{{pod.video}}" type="video/mp4"/>
-            </video>
+        <!--<div class="video-container">-->
+            
             <!--<ion-icon *ngIf="videoState" class="video-container__play" name="md-play" (click)="play()"></ion-icon>
             <ion-icon *ngIf="!videoState" class="video-container__play" name="md-pause" (click)="play()"></ion-icon>-->
 
-            <ion-icon *ngIf="isMuted" class="video-container__sound" name="md-volume-off" (click)="volume()"></ion-icon>
-            <ion-icon *ngIf="!isMuted" class="video-container__sound" name="md-volume-up" (click)="volume()"></ion-icon>
-        </div>
+            <!--<ion-icon *ngIf="isMuted" class="video-container__sound" name="md-volume-off" (click)="volume()"></ion-icon>
+            <ion-icon *ngIf="!isMuted" class="video-container__sound" name="md-volume-up" (click)="volume()"></ion-icon>-->
+        <!--</div>-->
+
+        <video controls #videoPlayer class="video" preload="metadata" loop webkit-playsinline playsinline autoplay>
+            <source src="http://dt9l6ktqnhlee.cloudfront.net/v{{pod.video}}" type="video/mp4"/>
+        </video>
 
         <ion-card-content>
             <div [innerHTML]="pod.description"></div>

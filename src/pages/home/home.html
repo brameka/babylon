@@ -5,7 +5,7 @@
     </button>-->
     <ion-title>
       <img src="assets/images/brand.png" alt="" style="height: 26px; margin-top: 6px;">
-      <span *ngIf="completed" class="total">{{completed}}/30</span>
+      <span *ngIf="completed" class="total">{{completed}}/27</span>
     </ion-title>
     <ion-buttons end>
 
@@ -23,7 +23,7 @@
 <ion-content>
   <md-grid-list cols="3" rowHeight="1:1">
 
-    <md-grid-tile tappable *ngFor="let pod of pods" (click)="details(pod)">
+    <md-grid-tile class="tappable-tile" tappable *ngFor="let pod of pods" (click)="details(pod)">
 
       <div class="tile-container" *ngIf="pod.status == 0">  
         <img src="assets/gif/{{pod.gif}}" alt="" style="min-height: 135px;">

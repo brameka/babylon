@@ -29,6 +29,7 @@
 // }
 
 .swiper-pagination-bullet-active {
+    display: none;
     background:#6142f4;
 }
 
@@ -45,3 +46,32 @@
 //     cursor:pointer;
 //     z-index:5;
 // }
+
+.video-container {
+        position: relative;
+        
+
+        &__play {
+            position: absolute;
+            bottom: 15px;
+            left: 15px;
+            color: $white;
+            font-size: 24px;
+        }
+
+        &__sound {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            color: $white;
+            font-size: 24px;
+        }
+    }
+
+    .video-container {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+        padding-top: 0;
+        background: #000;
+    }

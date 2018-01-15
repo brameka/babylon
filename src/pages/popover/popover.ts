@@ -4,15 +4,15 @@ import { SocialSharing } from '@ionic-native/social-sharing';
 
 @Component({
 template: `
-    <div style="width: 100%; padding: 0; text-align: center; min-height: 250px">
+    <div style="width: 100%; padding: 0; text-align: center; min-height: 425px">
         <div class="level-gif">
             <div class="leveled-up">
-                <img src="assets/png/level.png" alt=""/>
+                <img src="assets/png/completed.png" alt=""/>
             </div>
             <div class="level">
-                <img src="assets/png/rookie.png" alt=""/>
+                <img src="assets/png/averagemum.png" alt=""/>
             </div>
-            <img src="assets/badge/badge1.gif" alt="">
+            <img style="width: 100%" src="{{badge.gif}}" alt="">
         </div>
         <div class="complete-btns">
             <button class="complete-btn fb-btn" ion-button icon-left (click)="share()" color="primary">
@@ -36,7 +36,7 @@ export class Popover {
   }
 
   share() {
-      this.socialSharing.shareViaFacebook('I Just leveled up my averagemum').then(() => {
+      this.socialSharing.shareViaFacebook('I just completed "27 Easy, Non-Annoying Things To Teach Your Kid" an app by #averagemum', 'https://ibb.co/fYVg96', 'https://www.facebook.com/Average-Mum-884819475009637').then(() => {
         // Success!
       }).catch(() => {
         // Error!

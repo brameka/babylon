@@ -8,14 +8,16 @@ template: `
         <div class="nailed-it">
             <img src="assets/png/nailed-it.png" alt=""/>
         </div>
+        
         <div class="img" style="width: 100%; padding: 0">
-            <!-- <img src="assets/images/{{pod.completion.image}}" alt=""> -->
             <img src="assets/images/{{pod.avatar}}" alt=""/>
+            <!-- <img src="assets/images/{{pod.completion.image}}" alt=""> -->
         </div>
+
         <div class="complete-btns">
-            <!-- <button class="complete-btn" ion-button icon-left (click)="share()" color="primary">
-                <ion-icon name="logo-facebook"></ion-icon> SHARE
-            </button> -->
+            <button class="complete-btn fb-btn" ion-button icon-left (click)="share()" color="primary">
+                <ion-icon name="logo-facebook"></ion-icon> FACEBOOK
+            </button>
             <button class="complete-btn" ion-button (click)="complete()" color="primary">Complete</button>
             <button class="complete-btn" ion-button (click)="close()" color="light">Cancel</button>
         </div>
@@ -33,7 +35,7 @@ export class Thumbsover {
 
   share() {
       const share = this.pod.complete;
-      this.socialSharing.shareViaFacebook(share.message).then(() => {
+      this.socialSharing.shareViaFacebook('I just schooled by kid like an averagemum', 'https://ibb.co/fYVg96', 'https://www.facebook.com/Average-Mum-884819475009637').then(() => {
         // Success!
       }).catch(() => {
         // Error!

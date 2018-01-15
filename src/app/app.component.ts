@@ -8,6 +8,8 @@ import { DataService } from '../services/data.service';
 import { Storage } from '@ionic/storage';
 import { DetailsPage } from '../pages/details/details';
 
+declare var nativeclick;
+
 @Component({
   templateUrl: 'app.html',
   providers: [DataService]
@@ -28,15 +30,14 @@ export class MyApp {
     this.initializeApp();
 
     this.storage.get('onboard').then((result) => {
- 
         if(result){
           this.rootPage = HomePage;
         } else {
           this.rootPage = Onboard;
           this.storage.set('onboard', true);
         }
-
     });
+    
     this.dataService.modules$.subscribe(x => {
       this.modules = x;
     });
@@ -46,7 +47,11 @@ export class MyApp {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then((value) => {
+      if (value === 'cordova'){
+        var clickyClasses = ['button', 'a', 'fab', 'tappable-tile', 'back-button']; // add other classes that should make a sound when clicked on
+        nativeclick.watch(clickyClasses);
+      }
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
 
