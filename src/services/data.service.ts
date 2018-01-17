@@ -34,9 +34,9 @@ export class DataService {
     }
 
     public refresh(){
-        this.data = this._modules;
-        this.badgeData = this.badges;
-        this.save();
+        // this.data = this._modules;
+        // this.badgeData = this.badges;
+        // this.save();
 
         this.storage.get('badges').then((result) => {
             if (result) {
